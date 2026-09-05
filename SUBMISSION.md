@@ -2,12 +2,12 @@
 
 ## Repository
 
-GitHub: https://github.com/USERNAME/property-rental-management
+GitHub: https://github.com/AshPrime3/EstateHub
 
 ## Live Application
 
-Frontend: https://property-rental.vercel.app
-Backend API: https://property-rental-api.onrender.com
+Frontend: https://estate-hub.vercel.app
+Backend API: https://estatehub-li0f.onrender.com/api
 
 ## Demo Credentials
 
