@@ -9,5 +9,6 @@ coverage/
 *.log
 .turbo/
 
-# Personal learning guide (local only)
+# Personal learning guide and study notes (local only)
 ESTATEHUB_LEARNING_GUIDE.md
+learning/
