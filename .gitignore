@@ -8,3 +8,6 @@ coverage/
 .DS_Store
 *.log
 .turbo/
+
+# Personal learning guide (local only)
+ESTATEHUB_LEARNING_GUIDE.md
