@@ -49,7 +49,7 @@ export default function Sidebar() {
       {/* Sidebar */}
       <aside className={`fixed lg:static top-0 left-0 z-40 h-screen w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 ${collapsed ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
         <div className="p-6 border-b border-gray-200">
-          <h1 className="text-xl font-bold text-gray-900">🏢 PropManager</h1>
+          <h1 className="text-xl font-bold text-gray-900">🏢 EstateHub</h1>
           <p className="text-xs text-gray-500 mt-1">{user?.role === 'PROPERTY_MANAGER' ? 'Property Manager' : 'Contractor'}</p>
         </div>
 

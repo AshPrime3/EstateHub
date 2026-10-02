@@ -2,7 +2,7 @@
 
 ## Overview
 
-Property Rental & Maintenance Management System using a separated frontend/backend architecture.
+EstateHub is a property rental and maintenance management system using a separated frontend/backend architecture.
 
 ## System Components
 
@@ -63,9 +63,9 @@ Browser → Vercel (React frontend)
          Supabase (PostgreSQL)
 ```
 
-## What Was Not Built
+## Future Enhancements
 
-The following optional stretch features were not implemented because all 10 mandatory goals were prioritized:
+The following features are planned for future iterations:
 
 - Tenant portal
 - Lease renewals

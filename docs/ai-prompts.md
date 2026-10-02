@@ -1,12 +1,14 @@
 # AI Prompts Log
 
-## Assignment Decomposition
+This document records the AI-assisted development prompts used during the build, along with what corrections were needed.
+
+## Project Planning
 
 ### Prompt
-"Hey, I need help breaking down this property management assignment. I've attached the `blueprint.md` and `guide.md` files. Can you review them and help me outline a concrete implementation plan? I specifically need to make sure I hit all 10 mandatory goals and follow the checkpoint-based approach. What's the best way to structure the database and the Express backend?"
+"I need help breaking down a property management system. Can you review the requirements and help me outline a concrete implementation plan? I need to cover all core features including authentication, units, maintenance lifecycle, rent, and alerts. What's the best way to structure the database and the Express backend?"
 
 ### What I Got
-A comprehensive analysis of all 130+ sections in the blueprint, identifying the exact database schema, API design, authentication/authorization requirements, maintenance lifecycle rules, rent classification logic, and alert system design.
+A comprehensive analysis identifying the exact database schema, API design, authentication/authorization requirements, maintenance lifecycle rules, rent classification logic, and alert system design.
 
 ### What I Corrected
 The initial analysis was accurate and provided a solid roadmap. No corrections needed at the planning stage.
@@ -16,13 +18,13 @@ The initial analysis was accurate and provided a solid roadmap. No corrections n
 ## Database Design
 
 ### Prompt
-"I'm setting up Prisma for the backend. Based on the requirements in the blueprint, I need to create the schema with all 7 tables: User, Unit, MaintenanceRequest, etc. Can you generate the `schema.prisma` file with the correct enums, relationships, and indexes? Remember that multiple contractors can be assigned to a single maintenance request, so we'll need a join table."
+"I'm setting up Prisma for the backend. Based on the requirements, I need to create the schema with all 7 tables: User, Unit, MaintenanceRequest, etc. Can you generate the `schema.prisma` file with the correct enums, relationships, and indexes? Remember that multiple contractors can be assigned to a single maintenance request, so we'll need a join table."
 
 ### What I Got
 A complete schema with User, Unit, MaintenanceRequest, MaintenanceAssignment, RentPayment, MaintenanceEvent, and RentAlertDismissal models.
 
 ### What I Corrected
-AI initially suggested storing `contractorId` directly on the `MaintenanceRequest` table as a simple foreign key. This was incorrect because the assignment explicitly requires allowing multiple contractors to be assigned to a single request. I corrected this by having it generate a separate `MaintenanceAssignment` join table with a unique constraint on `(requestId, contractorId)` to prevent duplicate assignments.
+AI initially suggested storing `contractorId` directly on the `MaintenanceRequest` table as a simple foreign key. This was incorrect because the system requires allowing multiple contractors to be assigned to a single request. I corrected this by having it generate a separate `MaintenanceAssignment` join table with a unique constraint on `(requestId, contractorId)` to prevent duplicate assignments.
 
 ---
 
@@ -48,7 +50,7 @@ Initially, the AI implementation allowed the `TRIAGED -> SCHEDULED` transition w
 Implementation using a `RentAlertDismissal` table with a `(unitId, paymentMonth)` composite unique constraint.
 
 ### What I Corrected
-No correction needed. The AI correctly identified the need for a separate tracking table based on the explicit warning in the blueprint, and implemented the exact composite key needed.
+No correction needed. The AI correctly identified the need for a separate tracking table and implemented the exact composite key needed.
 
 ---
 
@@ -61,4 +63,4 @@ No correction needed. The AI correctly identified the need for a separate tracki
 Bulk processing endpoint that parses the CSV, validates all rows, and returns a detailed array of per-row classifications.
 
 ### What I Corrected
-The AI initially just skipped unknown unit identifiers and returned a success message for the matched ones. I had to modify the code to explicitly report those missing units as `UNMATCHED` in the response array, since the blueprint strictly states that no rows should be silently discarded.
+The AI initially just skipped unknown unit identifiers and returned a success message for the matched ones. I had to modify the code to explicitly report those missing units as `UNMATCHED` in the response array, ensuring no rows are silently discarded.

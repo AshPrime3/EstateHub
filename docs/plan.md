@@ -63,7 +63,6 @@
 ### Session 8 — Testing + Documentation
 - Automated tests for business rules
 - Complete documentation files
-- SUBMISSION.md
 - **Estimated**: 2h
 - **Actual**: TBD
 

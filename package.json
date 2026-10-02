@@ -1,8 +1,8 @@
 {
-  "name": "property-rental-management",
+  "name": "estatehub",
   "version": "1.0.0",
   "private": true,
-  "description": "Property Rental & Maintenance Management System — BUSY Infotech Assignment 07",
+  "description": "EstateHub — Full-stack property rental and maintenance management system",
   "workspaces": [
     "client",
     "server"

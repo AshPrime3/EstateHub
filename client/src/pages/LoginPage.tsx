@@ -26,8 +26,8 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">🏢 PropManager</h1>
-          <p className="text-gray-500 mt-2">Property Rental & Maintenance System</p>
+          <h1 className="text-3xl font-bold text-gray-900">🏢 EstateHub</h1>
+          <p className="text-gray-500 mt-2">Property Rental & Maintenance Management</p>
         </div>
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
           <h2 className="text-xl font-semibold text-gray-900 mb-6">Sign In</h2>

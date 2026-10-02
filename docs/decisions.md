@@ -16,19 +16,19 @@
 
 **Chose**: REST  
 **Rejected**: GraphQL  
-**Reason**: The application has a small, predictable API surface with clear resource boundaries (units, maintenance, rent, dashboard, alerts). REST's simplicity reduces complexity and is more appropriate for a take-home assignment. GraphQL would add unnecessary overhead.
+**Reason**: The application has a small, predictable API surface with clear resource boundaries (units, maintenance, rent, dashboard, alerts). REST's simplicity reduces complexity. GraphQL would add unnecessary overhead for this scope.
 
 ## Decision 4 — Append-Only Audit Events
 
 **Chose**: Immutable MaintenanceEvent table with no update/delete endpoints  
 **Rejected**: Mutable history with soft-delete  
-**Reason**: The assignment explicitly requires that maintenance history cannot be rewritten. Making the events append-only at both the API and database level ensures this invariant is always maintained.
+**Reason**: The application requires that maintenance history cannot be rewritten. Making the events append-only at both the API and database level ensures this invariant is always maintained.
 
 ## Decision 5 — Month-Specific Alert Dismissal
 
 **Chose**: RentAlertDismissal table with (unitId, paymentMonth) unique constraint  
 **Rejected**: Boolean `alertDismissed` flag on Unit table  
-**Reason**: A unit-level boolean would permanently suppress alerts. The assignment requires that dismissing September's alert should not prevent October's alert. The month-specific dismissal table correctly models this requirement.
+**Reason**: A unit-level boolean would permanently suppress alerts. The system requires that dismissing September's alert should not prevent October's alert. The month-specific dismissal table correctly models this requirement.
 
 ## Decision 6 — Grace Period Configuration
 
@@ -39,7 +39,7 @@
 
 **Initial approach**: Store a single `contractorId` directly on MaintenanceRequest  
 **Why it seemed reasonable**: Simplest possible implementation, one foreign key per request  
-**What exposed the problem**: The assignment specification says "any number of contractors may be assigned to a request"  
+**What exposed the problem**: The requirements specify "any number of contractors may be assigned to a request"  
 **Final approach**: Created a separate `MaintenanceAssignment` join table with unique constraint on (requestId, contractorId)  
 **Why this is better**: Correctly models the many-to-many relationship between requests and contractors, allows multiple assignments per request, and prevents duplicate assignments via database constraint
 
